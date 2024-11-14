@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 
-// TODO provide proper implementation.
+
 
 public class CourseCollectionRepository implements CourseDao{
 

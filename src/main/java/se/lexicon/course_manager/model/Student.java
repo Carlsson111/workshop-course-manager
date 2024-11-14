@@ -5,7 +5,7 @@ import se.lexicon.course_manager.data.sequencers.StudentSequencer;
 import java.io.Serializable;
 import java.util.Objects;
 
-// TODO implement model
+
 public class Student implements Serializable {
     private int id;
     private String name;
