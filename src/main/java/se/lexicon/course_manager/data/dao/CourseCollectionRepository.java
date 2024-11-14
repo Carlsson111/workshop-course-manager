@@ -84,16 +84,16 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Collection<Course> findByStudentId(int studentId) {
-        HashSet<Course> result = new HashSet<>();
+        Collection<Course> coursesForASpecificStudent = new HashSet<>();
         for (Course course : courses) {
             for (Student student : course.getStudents()) {
                 if (student.getId() == studentId) {
-                    result.add(course);
+                    coursesForASpecificStudent.add(course);
                 }
             }
 
         }
-        return result;
+        return coursesForASpecificStudent;
     }
 
     @Override

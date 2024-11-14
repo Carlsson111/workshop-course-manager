@@ -7,30 +7,47 @@ import se.lexicon.course_manager.model.Course;
 import se.lexicon.course_manager.model.Student;
 
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
-// TODO Convert model -> view & models -> views
+
 
 @Component
 public class ModelToDto implements Converters {
     @Override
     public StudentView studentToStudentView(Student student) {
-        return null;
+        return new StudentView(student.getId(), student.getName(), student.getEmail(), student.getAddress());
     }
 
     @Override
     public CourseView courseToCourseView(Course course) {
-        return null;
+        return  new CourseView(course.getId(), course.getCourseName(), course.getStartDate(), course.getWeekDuration(), studentsToStudentViews(course.getStudents()));
     }
 
     @Override
     public List<CourseView> coursesToCourseViews(Collection<Course> courses) {
-        return null;
+
+        if (courses== null) return null;
+
+        List<CourseView> courseViews = new ArrayList<>();
+        for (Course course: courses){
+            courseViews.add(courseToCourseView(course));
+
+        }
+        return courseViews;
+
+
+
     }
 
     @Override
     public List<StudentView> studentsToStudentViews(Collection<Student> students) {
-        return null;
+        if (students == null) return null;
+
+        List <StudentView> studentViews = new ArrayList<>();
+        for (Student s : students){
+            studentViews.add(studentToStudentView(s));
+        }
+        return studentViews;
     }
+
 }

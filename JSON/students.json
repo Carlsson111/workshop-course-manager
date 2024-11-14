@@ -1,1 +1,6 @@
-[ ]
+[ {
+  "id" : 2,
+  "name" : "Anders Johansson",
+  "email" : "anders.test@tes.se",
+  "address" : "Bergsvägen 77"
+} ]
