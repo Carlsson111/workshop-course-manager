@@ -24,15 +24,17 @@ public class StudentCollectionRepository implements StudentDao {
     public Student createStudent(String name, String email, String address) {
         int id = StudentSequencer.nextStudentId();
         Student newStudent = new Student(id, name, email, address);
-        students.add(newStudent);
-        return newStudent;
+        if (students.add(newStudent)){
+            return newStudent;
+        }
+        return null;
     }
 
 
     @Override
     public Student findByEmailIgnoreCase(String email) {
         for (Student student : students){
-            if (student.getEmail().equalsIgnoreCase(email)){
+            if (student.getEmail().trim().equalsIgnoreCase(email)){
                 return student;
             }
         }
@@ -42,10 +44,10 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findByNameContains(String name) {
-        List<Student> result = new ArrayList<>();
-        for (Student student : students){
-            if (student.getName().toLowerCase().contains(name.toLowerCase())){
-                result.add(student);
+        Collection<Student> result = new ArrayList<>();
+        for (Student s : students){
+            if (s.getName().trim().toLowerCase().contains(name.trim().toLowerCase())){
+                result.add(s);
             }
         }
         return result;
