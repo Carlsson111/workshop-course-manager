@@ -2,6 +2,7 @@ package se.lexicon.course_manager.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
@@ -21,10 +22,12 @@ public class Course implements Serializable {
 
 
     public Course() {
+        this.students = new ArrayList<>();
     }
 
     public Course(int id) {
         this.id = id;
+        this.students = new ArrayList<>();
     }
 
     public Course(int id, String courseName, LocalDate startDate, int weekDuration) {
@@ -32,7 +35,15 @@ public class Course implements Serializable {
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
-        this.students = new HashSet<>();
+        this.students = new ArrayList<>();
+    }
+
+    public Course(int id, String courseName, LocalDate startDate, int weekDuration, Collection<Student> students) {
+        this.id = id;
+        this.courseName = courseName;
+        this.startDate = startDate;
+        this.weekDuration = weekDuration;
+        this.students = students;
     }
 
     public int getId() {
