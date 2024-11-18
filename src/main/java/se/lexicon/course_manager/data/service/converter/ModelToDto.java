@@ -37,8 +37,6 @@ public class ModelToDto implements Converters {
         }
         return courseViews;
 
-
-
     }
 
     @Override
