@@ -148,7 +148,7 @@ public class CourseManagerTest {
         assertEquals("Java Advanced", result.get(0).getCourseName());
     }
 
-
+// cant find the problem since it works, fine online but not in test
 
     @Test
     void findByStudentId() {
