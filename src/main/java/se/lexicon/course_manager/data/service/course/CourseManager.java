@@ -33,28 +33,28 @@ public class CourseManager implements CourseService {
 
     @Override
     public CourseView create(CreateCourseForm form) {
-        Course course = courseDao.createCourse(form.getCourseName(), form.getStartDate(), form.getWeekDuration());
-        return new CourseView(course.getId(),course.getCourseName(), course.getStartDate(), course.getWeekDuration(), converters.studentsToStudentViews(course.getStudents()));
+        return converters.courseToCourseView(courseDao.createCourse(form.getCourseName(), form.getStartDate(), form.getWeekDuration()));
+
 
     }
 
     @Override
     public CourseView update(UpdateCourseForm form) {
-        Course course = courseDao.findById(form.getId());
+        Course courseUd = courseDao.findById(form.getId());
 
-        if(course == null) return null;
-        course.setCourseName(form.getCourseName());
-        course.setStartDate(form.getStartDate());
+        if(courseUd == null) return null;
+        courseUd.setCourseName(form.getCourseName());
+        courseUd.setStartDate(form.getStartDate());
 
-        return converters.courseToCourseView(course);
+        return converters.courseToCourseView(courseUd);
     }
 
 
     @Override
     public List<CourseView> searchByCourseName(String courseName) {
 
-        Collection<Course> courses = courseDao.findByNameContains(courseName);
-        return converters.coursesToCourseViews(courses);
+        Collection<Course> coursesName = courseDao.findByNameContains(courseName);
+        return converters.coursesToCourseViews(coursesName);
     }
 
     @Override
