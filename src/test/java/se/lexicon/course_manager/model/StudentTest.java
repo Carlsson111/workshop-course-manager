@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class StudentTest {
-    // TODO Implement your tests here
+
     private Student student;
 
     @BeforeEach
