@@ -52,10 +52,8 @@ public class CourseManagerTest {
 
     @BeforeEach
     void setUp() {
-        student = new Student(1,"Linus", "Linus.te@test.nu", "Vintergatan 8");
-        course = new Course(1, "Java Advanced", LocalDate.of(2024, 11, 18), 10);
-        courseDao.createCourse(course.getCourseName(), course.getStartDate(), course.getWeekDuration());
-        studentDao.createStudent(student.getName(), student.getEmail(), student.getAddress());
+        course = courseDao.createCourse("Java Advanced", LocalDate.of(2024, 11, 18),10 );
+        student = studentDao.createStudent("Linus", "Linus.te@test.nu", "Vintergatan 8");
 
 
     }
@@ -154,11 +152,10 @@ public class CourseManagerTest {
     void findByStudentId() {
         // Enroll the student in the course
         course.enrollStudent(student);
-        courseDao.createCourse(course.getCourseName(), course.getStartDate(), course.getWeekDuration());
         // Print debug statements
         System.out.println("Course: " + course); System.out.println("Student: " + student);
         // Find courses by student ID
-        List<CourseView> result = testObject.findByStudentId(1);
+        List<CourseView> result = testObject.findByStudentId(student.getId());
         // Print debug statements
         System.out.println("Result: " + result);
         assertEquals("Java Advanced", result.get(0).getCourseName());
