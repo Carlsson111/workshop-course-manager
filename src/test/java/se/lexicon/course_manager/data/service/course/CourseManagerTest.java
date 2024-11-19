@@ -155,7 +155,7 @@ public class CourseManagerTest {
         System.out.println("Course: " + course); System.out.println("Student: " + student);
         // Find courses by student ID
         List<CourseView> result = testObject.findByStudentId(student.getId());
-        // Print debug statements
+
         System.out.println("Result: " + result);
         assertEquals("Java Advanced", result.get(0).getCourseName());
     }
