@@ -46,7 +46,7 @@ public class CourseManagerTest {
         assertNotNull(courseDao);
     }
 
-    // TODO Write your tests here
+
 
 
 
@@ -146,7 +146,6 @@ public class CourseManagerTest {
         assertEquals("Java Advanced", result.get(0).getCourseName());
     }
 
-// cant find the problem since it works, fine online but not in test, welp
 
     @Test
     void findByStudentId() {
